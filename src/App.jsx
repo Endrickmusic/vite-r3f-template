@@ -1,35 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Canvas } from "@react-three/fiber"
+import { Environment } from "@react-three/drei"
 
-function App() {
-  const [count, setCount] = useState(0)
+import './index.css'
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+import Experience from "./Experience"
+
+
+export default function App() {
+
+ return (
+
+  
+    <Canvas shadows camera={{ position: [0, 0, 4], fov: 40 }}>
+      <Environment
+        files="./textures/envmap.hdr" />
+        <color 
+          attach="background" 
+          args={["#eeeeee"]} />
+      <Experience />
+    </Canvas>
+  
+  );
 }
 
-export default App
